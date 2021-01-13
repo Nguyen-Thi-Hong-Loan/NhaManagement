@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:replace="head :: head">
+
+</head>
+<body>
+	<div id="page">
+		<header th:replace="header :: header"> </header>
+
+		<!-- Begin Main -->
+		<div role="main" class="main pgl-bg-grey">
+			<!-- Begin page top -->
+			<section class="page-top">
+				<div class="container">
+					<div class="page-top-in">
+						<h2>
+							<span>Grid with sidebar</span>
+						</h2>
+					</div>
+				</div>
+			</section>
+			<!-- End page top -->
+
+			<!-- Begin content with sidebar -->
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9 content">
+
+						<!-- Begin Featured -->
+						<section class="pgl-featured">
+							<h2 th:text="#{highLights}"></h2>
+							<div class="row">
+								<div class="owl-carousel pgl-pro-slide"
+									data-plugin-options='{"items": 3, "singleItem": false, "autoPlay": false, "pagination": false}'>
+									<div class="col-md-12 animation">
+										<div class="pgl-property featured-item">
+											<div class="property-thumb-info">
+												<div class="property-thumb-info-image">
+													<img alt="" class="img-responsive"
+														src="/images/properties/property-featured-2.jpg">
+												</div>
+												<div class="property-thumb-info-content">
+													<h3>
+														<a href="propertyDetail.html">J St, Modesto, CA 95351</a>
+													</h3>
+													<p>Amet luctus nisl tempus.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 animation">
+										<div class="pgl-property featured-item">
+											<div class="property-thumb-info">
+												<div class="property-thumb-info-image">
+													<img alt="" class="img-responsive"
+														src="/images/properties/property-featured-3.jpg">
+												</div>
+												<div class="property-thumb-info-content">
+													<h3>
+														<a href="propertyDetail.html">Spring Gate DrUNIT 4106</a>
+													</h3>
+													<p>Amet luctus nisl tempus.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 animation">
+										<div class="pgl-property featured-item">
+											<div class="property-thumb-info">
+												<div class="property-thumb-info-image">
+													<img alt="" class="img-responsive"
+														src="/images/properties/property-featured-4.jpg">
+												</div>
+												<div class="property-thumb-info-content">
+													<h3>
+														<a href="#">Chatham St NW, Roanoke</a>
+													</h3>
+													<p>Amet luctus nisl tempus.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 animation">
+										<div class="pgl-property featured-item">
+											<div class="property-thumb-info">
+												<div class="property-thumb-info-image">
+													<img alt="" class="img-responsive"
+														src="/images/properties/property-featured-5.jpg">
+												</div>
+												<div class="property-thumb-info-content">
+													<h3>
+														<a href="#">Stockton, CA 95215</a>
+													</h3>
+													<p>Amet luctus nisl tempus.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 animation">
+										<div class="pgl-property featured-item">
+											<div class="property-thumb-info">
+												<div class="property-thumb-info-image">
+													<img alt="" class="img-responsive"
+														src="/images/properties/property-featured-3.jpg">
+												</div>
+												<div class="property-thumb-info-content">
+													<h3>
+														<a href="propertyDetail.html">Spring Gate DrUNIT 4106</a>
+													</h3>
+													<p>Amet luctus nisl tempus.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 animation">
+										<div class="pgl-property featured-item">
+											<div class="property-thumb-info">
+												<div class="property-thumb-info-image">
+													<img alt="" class="img-responsive"
+														src="/images/properties/property-featured-4.jpg">
+												</div>
+												<div class="property-thumb-info-content">
+													<h3>
+														<a href="propertyDetail.html">Chatham St NW, Roanoke</a>
+													</h3>
+													<p>Amet luctus nisl tempus.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<hr class="mid">
+						</section>
+						<!-- End Featured -->
+
+						<!-- Begin Properties -->
+						<section class="pgl-properties pgl-bg-grey">
+							<div class="container">
+								<h2>Offfice house</h2>
+								<div
+									class="properties-full properties-listing properties-listfull">
+									<div class="listing-header clearfix">
+										<ul class="list-inline list-icons pull-left">
+
+											<li class="active"><a href="#"><i
+													class="fa fa-th-list"></i></a></li>
+
+										</ul>
+										<ul class="list-inline list-sort pull-leaf">
+											<li><label th:text="#{sort}"> </label> <a id="sort1"
+												th:href="@{/hostel/Search/sortUp}"> Giá tăng</a> | <a
+												id="sort2" th:href="@{/hostel/Search/sortDown}"> Giá
+													giảm</a></li>
+
+										</ul>
+									</div>
+
+									<div class="pgl-property animation" th:each="post : ${posts}">
+										<div class="row">
+											<div class="col-sm-6 col-md-4">
+												<div class="property-thumb-info-image">
+													<img alt="" class="img-responsive"
+														th:src="@{'/images/properties/' + ${post.image[0].link}}">
+													<span class="property-thumb-info-label"> <span
+														class="label price"
+														th:text="${post.content.price} +' VNĐ'"></span>
+													</span>
+												</div>
+											</div>
+											<div class="col-sm-6 col-md-8">
+												<div class="property-thumb-info">
+
+													<div class="property-thumb-info-content">
+														<h3>
+															<a th:href="@{'/hostel/detailPost/'+${post.id}}"
+																th:text="${post.title}"></a>
+														</h3>
+														<address th:text="${post.shortDescription}"></address>
+														<strong th:text="${post.content.address}"></strong><br>
+														<strong>Người tạo: </strong>
+														<p th:text="${post.createBy}"></p>
+
+													</div>
+													<div class="amenities clearfix">
+														<ul class="pull-left">
+															<li><strong>Area:</strong> <strong
+																th:text="${post.content.acreage}"></strong> <sup>m2</sup></li>
+														</ul>
+														<button class="label forrent pull-right btn-save"
+															th:data-id="${post.id}" th:text="#{button.save}">
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<ul class="pagination">
+										<li class="active"><a href="#">1 <span
+												class="sr-only">(current)</span></a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">Next</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<!-- End Properties -->
+
+					</div>
+					<div class="col-md-3 sidebar">
+						<!-- Begin Advanced Search -->
+						<aside class="block pgl-advanced-search pgl-bg-light">
+							<h3>Tìm kiếm</h3>
+							<form name="advancedsearch" th:action="@{/hostel/Search}">
+
+								<div class="form-group">
+									Tỉnh/Thành <label class="sr-only" th:text="#{label.city}"></label>
+									<select id="location" name="city" data-placeholder="Lựa chọn"
+										class="chosen-select">
+
+										<option value="TPHCM">TP Hồ Chí Minh</option>
+										<option value="BinhDuong">Bình Dương</option>
+										<option value="DongNai">Đồng Nai</option>
+
+
+
+									</select>
+								</div>
+								<div class="form-group">
+									Diện tích <label class="sr-only">Diện tích</label> <select
+										id="property-types" name="acreage" data-placeholder="Lựa chọn"
+										class="chosen-select">
+
+										<option value="30">< 30 m2</option>
+										<option value="40">< 40 m2</option>
+										<option value="50">< 50 m2</option>
+										<option value="60">< 60 m2</option>
+										<option value="70">< 70 m2</option>
+										<option value="71">> 70 m2</option>
+									</select>
+								</div>
+								<div class="form-group">
+									Giá <label class="sr-only">Giá</label> <select name="price"
+										data-placeholder="Lựa chọn" class="chosen-select">
+
+										<option value="1000000">< 1 triệu</option>
+										<option value="2000000">< 2 triệu</option>
+										<option value="3000000">< 3 triệu</option>
+										<option value="4000000">< 4 triệu</option>
+										<option value="4000001">> 4 triệu</option>
+									</select>
+								</div>
+
+
+
+								<div class="form-group">
+									<button type="submit" class="btn btn-block btn-primary">Tìm
+										kiếm</button>
+								</div>
+
+							</form>
+						</aside>
+						<!-- End Advanced Search -->
+
+					</div>
+				</div>
+			</div>
+			<!-- End content with sidebar -->
+
+		</div>
+		<!-- End Main -->
+		<!-- Begin footer -->
+		<footer class="pgl-footer">
+			<div class="container">
+				<div class="pgl-upper-foot">
+					<div class="row">
+						<div class="col-sm-4">
+							<h2 th:text="#{label.ContactInfo}"></h2>
+
+							<address>
+
+								<i class="fa fa-phone"></i> Điện thoại : 0800-666-6666<br>
+								<i class="fa fa-fax"></i> Fax : 1-800-666-8888<br> <i
+									class="fa fa-envelope-o"></i> Mail: <a
+									href="mailto:viet@gmail.com">viet@gmail.com</a>
+							</address>
+						</div>
+						<div class="col-sm-2">
+							<h2 th:text="#{label.tutorial}"></h2>
+							<ul class="list-unstyled">
+								<li><a href="#">Help and FAQs</a></li>
+								<li><a href="#">Home Price</a></li>
+								<li><a href="#">Market View</a></li>
+
+							</ul>
+						</div>
+						<div class="col-sm-2">
+							<h2 th:text="#{label.page}"></h2>
+							<ul class="list-unstyled">
+								<li><a href="#">Font &amp; Color</a></li>
+								<li><a href="#">Blogs</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">404 Page</a></li>
+								<li><a href="#">Property Custom Field</a></li>
+								<li><a href="#">Google Map</a></li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+				<div class="pgl-copyrights">
+					<p>Copyright © 2020 Nha. Designed by</p>
+				</div>
+			</div>
+		</footer>
+		<!-- End footer -->
+	</div>
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="/vendor/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/vendor/owl-carousel/owl.carousel.js"></script>
+	<script src="/vendor/flexslider/jquery.flexslider-min.js"></script>
+	<script src="/vendor/chosen/chosen.jquery.min.js"></script>
+	<script type="text/javascript"
+		src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+	<script src="/vendor/gmap/gmap3.infobox.min.js"></script>
+	<script src="/vendor/masonry/imagesloaded.pkgd.min.js"></script>
+	<script src="vendor/masonry/masonry.pkgd.min.js"></script>
+
+	<!-- Theme Initializer -->
+	<script src="/js/theme.plugins.js"></script>
+	<script src="/js/theme.js"></script>
+
+	<!-- Style Switcher -->
+	<script type="text/javascript" src="/style-switcher/js/switcher.js"></script>
+	<script type="text/javascript" src="/js/cookiesave.js"></script>
+	<!-- <script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			url:'/hostel/api',
+			method:'get',
+			data:{
+				id:10
+			},
+			success:function(value){
+				alert(value)
+			},
+			error:function(err){
+				alert(err)
+			}
+		})
+	})
+	</script> -->
+</body>
+
+<!-- Mirrored from pixelgeeklab.com/html/realestast/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Aug 2015 08:54:11 GMT -->
+</html>
