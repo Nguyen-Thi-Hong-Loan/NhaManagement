@@ -133,28 +133,7 @@
         <groupId>org.springframework.boot</groupId>  
         <artifactId>spring-boot-maven-plugin</artifactId> 
       </plugin>  
-      <plugin> 
-        <groupId>com.microsoft.azure</groupId>  
-        <artifactId>azure-webapp-maven-plugin</artifactId>  
-        <version>1.12.0</version>  
-        <configuration> 
-          <!--          ServicePlan9afa4d7d-5da8-494f        -->
-          <schemaVersion>V2</schemaVersion>  
-          <authType>azure_cli</authType>  
-          <resourceGroup>DefaultResourceGroup-SEA</resourceGroup>  
-          <appName>NhaApp</appName>  
-          <region>Southeast Asia</region>  
-          <runtime> 
-            <os>linux</os>  
-            <javaVersion>Java 11</javaVersion>  
-            <webContainer>Java SE</webContainer> 
-          </runtime>  
-          <deployment> 
-            <resources/> 
-          </deployment>  
-          <pricingTier>B1</pricingTier> 
-        </configuration> 
-      </plugin> 
+
     </plugins> 
   </build> 
 </project>
